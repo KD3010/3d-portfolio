@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Oswald&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "Oswald", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 1px;
+    background: #1e3c72;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2a5298, #1e3c72);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2a5298, #1e3c72); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: whitesmoke;
+    padding: 5rem 7rem;
+    scroll-behavior: smooth;
+    font-size: 1.5rem;
+}
+
+.portfolio-title {
+    font-size: 6rem;
+    width: 100%;
+    /* text-align: center; */
+    text-transform: uppercase;
+}
+
+section {
+    margin-top: 4rem;
+}
+
+/* Contact Me Buttons */
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  
+  .skills-container {
+    gap: 7rem;
+  }
+
+  @media screen and (max-width: 600px) {
+    .skills-container {
+        display: flex;
+        gap: 3rem;
+    }
+
+    body {
+        padding: 1rem;
+    }
+
+    .portfolio-title {
+        font-size: 2rem;
+    }
+
+    .contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    
+    .contact-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+  }
+
+  .contact-btn > div {
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+  }
+  
+  .contact-btn li {
+    list-style: none;
+  }
+  
+  .contact-btn li a {
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 75px;
+    font-size: 35px;
+    margin: 0 10px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+  }
+  
+  .contact-btn li a .icon {
+    position: relative;
+    color: #1e3c72;
+    transition: .5s;
+    z-index: 3;
+  }
+  
+  .contact-btn li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+  }
+  
+  .contact-btn li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1e3c72;
+    transition: .5s;
+    z-index: 2;
+  }
+  
+  .contact-btn li a:hover:before {
+    top: 0;
+  }
+  
+  .contact-btn li:nth-child(1) a:before{
+    background: #333;
+  }
+  
+  .contact-btn li:nth-child(2) a:before{
+    background: #0077b5;
+  }
+  
+  .contact-btn li:nth-child(3) a:before {
+    background: #55acee;
+  }
+  
+  .contact-btn li:nth-child(4) a:before {
+    background: #dd4b39;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    max-width: 100%;
+  }
+  
+  /* The actual timeline (the vertical ruler) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+  
+  /* Container around content */
+  .timeline-container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+  
+  /* The circles on the timeline */
+  .timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    right: -17px;
+    background-color: #1e3c72;
+    border: 4px solid whitesmoke;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  /* Place the timeline-container to the left */
+  .left {
+    left: 0;
+  }
+  
+  /* Place the timeline-container to the right */
+  .right {
+    left: 50%;
+  }
+  
+  /* Add arrows to the left timeline-container (pointing right) */
+  .left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+  
+  /* Add arrows to the right timeline-container (pointing left) */
+  .right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+  
+  /* Fix the circle for timeline-containers on the right side */
+  .right::after {
+    left: -16px;
+  }
+  
+  /* The actual content */
+  .timeline-content {
+    padding: 20px 40px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+    color: #1e3c72;
+  }
+  
+  /* Media queries - Responsive timeline on screens less than 600px wide */
+  @media screen and (max-width: 600px) {
+  /* Place the timelime to the left */
+    .timeline::after {
+      left: 31px;
+    }
+  
+  /* Full-width timeline-containers */
+    .timeline-container {
+      width: 100%;
+      padding-left: 70px;
+      padding-right: 25px;
+    }
+  
+  /* Make sure that all arrows are pointing leftwards */
+    .timeline-container::before {
+      left: 60px;
+      border: medium solid white;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent white transparent transparent;
+    }
+  
+  /* Make sure all circles are at the same spot */
+    .left::after, .right::after {
+      left: 15px;
+    }
+  
+  /* Make all right timeline-containers behave like the left ones */
+    .right {
+      left: 0%;
+    }
+  }
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+b {
+  font-weight: bolder;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+/* Skills */
+.block-container {
+    position: relative;
+    transition: 250ms;
+    perspective: 500px;
+  }
+  
+  .block-container .btn-back {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    width: inherit;
+    height: inherit;
+    transition: 250ms;
+    transform-style: preserve-3d;
+    transform-origin: bottom right;
+    transform: rotateZ(15deg);
+    will-change: transform;
+    box-shadow: 1px 0 30px #e4e4e4;
+  }
+  
+  .block-container .btn-front {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: inherit;
+    height: inherit;
+    background-color: #ffffff33;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    transition: 250ms;
+    transform-style: preserve-3d;
+    transform-origin: top left;
+    overflow: hidden;
+  }
+  
+  .block-container:hover > .btn-back {
+    transform: translateZ(20px) rotateZ(15deg) rotateX(-20deg) rotateY(-20deg);
+  }
+  
+  .block-container:hover > .btn-front {
+    transform: translateZ(80px) translateY(-5px) rotateX(15deg) rotateY(15deg);
+  }
+
+
