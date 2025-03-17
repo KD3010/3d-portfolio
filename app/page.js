@@ -1,25 +1,45 @@
 "use client";
+import * as THREE from 'three';
 import Experience from '@/components/Experience';
 import { ContactShadows, Environment, Float, Html, PresentationControls, Text, useGLTF } from '@react-three/drei';
-import React from 'react'
+import { useFrame } from '@react-three/fiber';
+import React, { useRef, useState } from 'react'
 
 const Macbook = ({children}) => {
   const model = useGLTF("/models/macbook.gltf");
   return <primitive object={model.scene} position={[0, -0.9, 0]}>{children}</primitive>;
 }
 
-const Page = () => {
+const Scene = () => {
+  const color = new THREE.Color;
+  const fullScreenRef = useRef();
+  const [hovered, setHovered] = useState(false);
 
-  return (
-    <Experience>
-      <Environment preset='city' />
-      <PresentationControls 
+  useFrame(() => {
+    fullScreenRef.current.material.color.lerp(color.set(hovered ? '#2a5298' : '#fff'), 0.1);
+  })
+
+  return (<>
+    <PresentationControls 
         global 
         rotation={[0.13, 0.1, 0]}
         polar={[-0.2, 0.4]}
         azimuth={[-0.5, 0.75]}
       >
         <Float rotationIntensity={0.4}>
+          <Text
+              font='/fonts/bangers.woff'
+              fontSize={0.1}
+              position={[ -1.2, 1.8, -1.7 ]}
+              rotation={[ -0.2, -0.15, 0 ]}
+              textAlign='center'
+              onClick={() => window.location.assign('/portfolio.html')}
+              ref={fullScreenRef}
+              onPointerOver={(e) => (e.stopPropagation(), setHovered(true))}
+              onPointerOut={() => setHovered(false)}
+            >
+            Full Screen
+          </Text>
           <rectAreaLight 
             width={3.6}
             height={1.65}
@@ -57,6 +77,14 @@ const Page = () => {
         opacity={0.4}
         blur={1.4}  
       />
+  </>)
+}
+
+const Page = () => {
+  return (
+    <Experience>
+      <Environment preset='city' />
+      <Scene />
     </Experience>
   )
 }
